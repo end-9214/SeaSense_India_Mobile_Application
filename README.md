@@ -1,6 +1,6 @@
 ### SeaSense India Mobile Application
 
-SeaSense India is a mobile application designed to assist tourists in finding suitable beach activities and receiving real-time safety alerts. The app leverages real-time ocean data, machine learning predictions, and a user-friendly interface to enhance the beach experience for visitors in India.
+SeaSense India helps tourists find suitable beach activities and receive real-time safety alerts using machine learning and ocean data. The project is currently under development.
 
 **Features:**
 - **Activity Suitability Prediction**: Uses a machine learning model to recommend suitable beach activities based on real-time ocean data.
@@ -15,5 +15,5 @@ SeaSense India is a mobile application designed to assist tourists in finding su
 - Database: MongoDB
 - Machine Learning: PyTorch, ZenML, MLflow
 
-The project aims to improve the beach-going experience through data-driven insights and a robust, scalable backend infrastructure. Feel free to explore, contribute, or provide feedback to help make SeaSense India even better!
+The project aims to improve the beach-going experience through data-driven insights and a robust, scalable backend infrastructure. Feel free to explore, contribute, or provide feedback to help make SeaSense India even better! The project is currently under development.
 
