@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 16),
                 Text(
-                  'Plan your perfect beach trip with real-time weather alerts, activity suggestions, and beautiful coastal views. Discover the best spots along the Southern, Eastern, and Western coasts of India.',
+                  'Plan your perfect beach trip with real-time weather alerts, activity suggestions, and beautiful coastal views. Discover the best spots along the Eastern and Western coasts of India.',
                   style: Theme.of(context)
                       .textTheme
                       .bodyMedium!
@@ -70,35 +70,6 @@ class HomeScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 32),
-                // Southern Coast Button
-                ElevatedButton(
-                  onPressed: () {
-                    // Navigate to the Southern Coast screen or perform action
-                  },
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 16),
-                    backgroundColor: Colors.deepOrangeAccent.withOpacity(0.8),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('🏝️', style: TextStyle(fontSize: 24)),
-                      SizedBox(width: 8),
-                      Text(
-                        'Southern Coast',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 16),
                 // East Coast Button
                 ElevatedButton(
                   onPressed: () {
