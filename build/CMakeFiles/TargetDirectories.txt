@@ -1,0 +1,7 @@
+/workspaces/SeaSense_India_Mobile_Application/build/CMakeFiles/install/strip.dir
+/workspaces/SeaSense_India_Mobile_Application/build/CMakeFiles/install/local.dir
+/workspaces/SeaSense_India_Mobile_Application/build/CMakeFiles/install.dir
+/workspaces/SeaSense_India_Mobile_Application/build/CMakeFiles/list_install_components.dir
+/workspaces/SeaSense_India_Mobile_Application/build/CMakeFiles/rebuild_cache.dir
+/workspaces/SeaSense_India_Mobile_Application/build/CMakeFiles/edit_cache.dir
+/workspaces/SeaSense_India_Mobile_Application/build/CMakeFiles/flutter_assemble.dir
