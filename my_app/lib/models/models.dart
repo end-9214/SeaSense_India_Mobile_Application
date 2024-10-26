@@ -1,4 +1,4 @@
-// models.dart
+// lib/models/models.dart
 class Beach {
   final int id;
   final String name;

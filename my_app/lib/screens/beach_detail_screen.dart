@@ -1,5 +1,6 @@
+// lib/screens/beach_detail_screen.dart
 import 'package:flutter/material.dart';
-import '../models/models.dart'; // Correct path for models.dart
+import '../models/models.dart';
 
 class BeachDetailScreen extends StatelessWidget {
   final Beach beach;
@@ -19,9 +20,9 @@ class BeachDetailScreen extends StatelessWidget {
           children: [
             Image.network(beach.imageUrl, fit: BoxFit.cover),
             SizedBox(height: 16),
-            Text(beach.name, style: Theme.of(context).textTheme.headline5),
+            Text(beach.name, style: Theme.of(context).textTheme.titleLarge),
             SizedBox(height: 8),
-            Text(beach.description, style: Theme.of(context).textTheme.bodyText2),
+            Text(beach.description, style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
       ),

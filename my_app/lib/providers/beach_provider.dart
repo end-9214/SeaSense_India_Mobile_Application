@@ -1,7 +1,7 @@
+// lib/providers/beach_provider.dart
 import 'package:flutter/material.dart';
-import '../models/models.dart'; // Correct path for models.dart
-import '../services/api_service.dart'; // Correct path for api_service.dart
-
+import '../models/models.dart';
+import '../services/api_service.dart';
 
 class BeachProvider with ChangeNotifier {
   final ApiService apiService;
@@ -19,7 +19,6 @@ class BeachProvider with ChangeNotifier {
     try {
       _beaches = await apiService.fetchBeaches();
     } catch (e) {
-      // Handle error here
       print('Error fetching beaches: $e');
     } finally {
       _isLoading = false;
