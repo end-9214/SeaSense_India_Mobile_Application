@@ -1,5 +1,6 @@
 // lib/screens/home_screen.dart
 import 'package:flutter/material.dart';
+import 'region_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -17,7 +18,7 @@ class HomeScreen extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/beach_background.jpg'), // Ensure the image is placed correctly in your assets
+                image: AssetImage('assets/images/beach_background.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -25,7 +26,7 @@ class HomeScreen extends StatelessWidget {
           // Content with description and buttons
           Container(
             padding: const EdgeInsets.all(16.0),
-            color: Colors.black.withOpacity(0.3), // Dark overlay for text contrast
+            color: Colors.black.withOpacity(0.3),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -56,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                       .textTheme
                       .bodyMedium!
                       .copyWith(
-                        color: Colors.white.withOpacity(0.95), // Lighter text color for better visibility
+                        color: Colors.white.withOpacity(0.95),
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
                         shadows: [
@@ -73,7 +74,12 @@ class HomeScreen extends StatelessWidget {
                 // East Coast Button
                 ElevatedButton(
                   onPressed: () {
-                    // Navigate to the East Coast screen or perform action
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RegionScreen(regionName: 'East Coast'),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 16),
@@ -102,7 +108,12 @@ class HomeScreen extends StatelessWidget {
                 // Western Coast Button
                 ElevatedButton(
                   onPressed: () {
-                    // Navigate to the Western Coast screen or perform action
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RegionScreen(regionName: 'West Coast'),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 16),
