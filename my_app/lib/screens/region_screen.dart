@@ -4,9 +4,9 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class RegionScreen extends StatefulWidget {
-  final String regionName;
+  final int regionId;
 
-  RegionScreen({required this.regionName});
+  RegionScreen({required this.regionId});
 
   @override
   _RegionScreenState createState() => _RegionScreenState();
@@ -14,6 +14,7 @@ class RegionScreen extends StatefulWidget {
 
 class _RegionScreenState extends State<RegionScreen> {
   List<dynamic> states = [];
+  bool isLoading = true;
 
   @override
   void initState() {
@@ -22,18 +23,24 @@ class _RegionScreenState extends State<RegionScreen> {
   }
 
   Future<void> fetchStates() async {
-    final url = 'http://10.0.2.2:8000/api/states/${widget.regionName}/'; // For Android emulator
+    final url = 'https://lonely-phantom-rj7g7vvq9w73wj6p-8000.app.github.dev/api/states/${widget.regionId}/';
+    try {
+      final response = await http.get(Uri.parse(url));
 
-    final response = await http.get(Uri.parse(url));
-
-    if (response.statusCode == 200) {
-      final data = json.decode(response.body);
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        setState(() {
+          states = data['states'];
+          isLoading = false;
+        });
+      } else {
+        throw Exception('Failed to load states');
+      }
+    } catch (e) {
+      print('Error fetching data: $e');
       setState(() {
-        states = data['states'];
+        isLoading = false;
       });
-    } else {
-      // Handle error if needed
-      print("Failed to load states");
     }
   }
 
@@ -42,7 +49,7 @@ class _RegionScreenState extends State<RegionScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text('${widget.regionName} States'),
+        title: Text('States in Region ${widget.regionId}'),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -60,39 +67,63 @@ class _RegionScreenState extends State<RegionScreen> {
           Container(
             padding: const EdgeInsets.all(16.0),
             color: Colors.black.withOpacity(0.3),
-            child: states.isEmpty
+            child: isLoading
                 ? Center(child: CircularProgressIndicator())
-                : ListView.builder(
-                    itemCount: states.length,
-                    itemBuilder: (context, index) {
-                      final state = states[index];
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: Card(
-                          color: Colors.black.withOpacity(0.6),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: ListTile(
-                            title: Text(
-                              state['name'],
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ),
-                            ),
-                            subtitle: Text(
-                              state['beaches'] ?? '',
-                              style: TextStyle(
-                                color: Colors.white70,
-                              ),
-                            ),
-                          ),
+                : states.isEmpty
+                    ? Center(
+                        child: Text(
+                          'No states available for this region.',
+                          style: TextStyle(color: Colors.white, fontSize: 18),
                         ),
-                      );
-                    },
-                  ),
+                      )
+                    : ListView.builder(
+                        itemCount: states.length,
+                        itemBuilder: (context, index) {
+                          final state = states[index];
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.white.withOpacity(0.8),
+                                padding: EdgeInsets.symmetric(vertical: 16),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                              onPressed: () {
+                                // Show beaches as an alert dialog
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text(state['name']),
+                                      content: Text(
+                                        state['beaches'] ?? 'No beaches listed.',
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text('Close'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
+                              child: Text(
+                                state['name'],
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
           ),
         ],
       ),

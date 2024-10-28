@@ -3,7 +3,7 @@
 from django.db import models
 
 class Region(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)  # Ensure name is unique for clarity
 
     def __str__(self):
         return self.name
@@ -11,7 +11,7 @@ class Region(models.Model):
 class State(models.Model):
     name = models.CharField(max_length=50)
     region = models.ForeignKey(Region, related_name='states', on_delete=models.CASCADE)
-    beaches = models.TextField(blank=True, null=True)  # New field to store beaches as text
+    beaches = models.TextField(blank=True, null=True)  # Stores a comma-separated list of beaches
 
     def __str__(self):
-        return self.name
+        return f"{self.name} in {self.region.name}"

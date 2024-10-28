@@ -77,7 +77,7 @@ class HomeScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => RegionScreen(regionName: 'East Coast'),
+                        builder: (context) => RegionScreen(regionId: 1),  // 1 for East Coast
                       ),
                     );
                   },
@@ -111,7 +111,7 @@ class HomeScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => RegionScreen(regionName: 'West Coast'),
+                        builder: (context) => RegionScreen(regionId: 2),  // 2 for West Coast
                       ),
                     );
                   },

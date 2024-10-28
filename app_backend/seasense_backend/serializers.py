@@ -6,11 +6,11 @@ from .models import Region, State
 class StateSerializer(serializers.ModelSerializer):
     class Meta:
         model = State
-        fields = ['name', 'beaches']  # Include beaches field
+        fields = ['id', 'name', 'beaches']  # Include id field for reference
 
 class RegionSerializer(serializers.ModelSerializer):
     states = StateSerializer(many=True)
 
     class Meta:
         model = Region
-        fields = ['name', 'states']  # Include states for each region
+        fields = ['id', 'name', 'states']  # Include id field for region
