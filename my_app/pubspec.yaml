@@ -27,5 +27,13 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/beach_background.jpg
+    - assets/images/west_bengal.jpg
+    - assets/images/odisha.jpg
+    - assets/images/andhra_pradesh.jpg
+    - assets/images/tamil_nadu.jpg
+    - assets/images/maharashtra.jpg
+    - assets/images/goa.jpg
+    - assets/images/karnataka.jpg
+    - assets/images/kerala.jpg
 
   

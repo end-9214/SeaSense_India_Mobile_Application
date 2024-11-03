@@ -1,5 +1,7 @@
 // lib/screens/home_screen.dart
 import 'package:flutter/material.dart';
+import '../data/east_coast_states.dart';
+import '../data/west_coast_states.dart';
 import 'region_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -77,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => RegionScreen(regionId: 1),  // 1 for East Coast
+                        builder: (context) => RegionScreen(states: eastCoastStates),
                       ),
                     );
                   },
@@ -111,7 +113,7 @@ class HomeScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => RegionScreen(regionId: 2),  // 2 for West Coast
+                        builder: (context) => RegionScreen(states: westCoastStates),
                       ),
                     );
                   },
